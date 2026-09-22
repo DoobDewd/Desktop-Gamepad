@@ -1,4 +1,4 @@
-﻿# Desktop Gamepad
+# Desktop Gamepad
 
 **Use your controller as a mouse and keyboard on Windows, so you can run your PC from the couch.**
 
@@ -8,14 +8,14 @@ Works great with the new Windows Xbox mode.
 
 ## Features
 
-- **Mouse** â€” the sticks move the cursor and scroll; buttons click, type keys and run shortcuts.
-- **Console-style typing** â€” click a text box and the on-screen keyboard pops up by itself, exactly like on an Xbox or a PlayStation. You type with the controller and never reach for a keyboard. Together with a cursor you drive with the stick, that gives you the complete console experience on a normal PC.
-- **Automatic profile switching** â€” each app gets the layout you gave it. Open a browser and the browser profile loads; open a video player and its profile loads. You never switch anything by hand.
-- **Second layer** â€” hold one button and every other button does a second job.
-- **Knows when to step back** â€” games and apps that read a controller themselves, such as the Xbox app, the Microsoft Store, Start and Xbox mode, keep the controller. Desktop Gamepad wakes up again when you leave them.
-- **Clean screen** â€” hides the mouse pointer when it isn't needed, and puts it back when you move it.
-- **Conflict warning** â€” tells you when another app is using the same controller, which can cause problems.
-- **Small and quiet** â€” no drivers, no background hooks in games, and it sleeps while no controller is connected.
+- **Mouse** — the sticks move the cursor and scroll; buttons click, type keys and run shortcuts.
+- **Console-style typing** — click a text box and the on-screen keyboard pops up by itself, exactly like on an Xbox or a PlayStation. You type with the controller and never reach for a keyboard. Together with a cursor you drive with the stick, that gives you the complete console experience on a normal PC.
+- **Automatic profile switching** — each app gets the layout you gave it. Open a browser and the browser profile loads; open a video player and its profile loads. You never switch anything by hand.
+- **Second layer** — hold one button and every other button does a second job.
+- **Knows when to step back** — games and apps that read a controller themselves, such as the Xbox app, the Microsoft Store, Start and Xbox mode, keep the controller. Desktop Gamepad wakes up again when you leave them.
+- **Clean screen** — hides the mouse pointer when it isn't needed, and puts it back when you move it.
+- **Conflict warning** — tells you when another app is using the same controller, which can cause problems.
+- **Small and quiet** — no drivers, no background hooks in games, and it sleeps while no controller is connected.
 
 Built and tested with Xbox controllers, over USB or Bluetooth. PlayStation pads and other controllers should work too.
 
@@ -37,7 +37,7 @@ Windows may show a blue **Windows protected your PC** box, because this app is n
 ## Requirements
 
 - Windows 10 version 1809 or later, or Windows 11
-- .NET Framework 4.8 and the WebView2 runtime â€” both come with Windows 11, and the installer tells you if one is missing
+- .NET Framework 4.8 and the WebView2 runtime — both come with Windows 11, and the installer tells you if one is missing
 
 No account, no ads, and nothing leaves your PC.
 
