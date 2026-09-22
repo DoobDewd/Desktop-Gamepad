@@ -417,6 +417,11 @@ namespace DesktopGamepad
             path.EndsWith(@"\StartMenuExperienceHost.exe", StringComparison.OrdinalIgnoreCase) ||
             (path.EndsWith(@"\SearchHost.exe", StringComparison.OrdinalIgnoreCase) && path.IndexOf(@"\SystemApps\", StringComparison.OrdinalIgnoreCase) >= 0);
 
+        /// <summary>Task View (Win+Tab). Windows Explorer owns it and moves its highlight with the controller itself.</summary>
+        static bool IsTaskView(ForegroundInfo fg) =>
+            string.Equals(fg.WindowClass, "XamlExplorerHostIslandWindow", StringComparison.OrdinalIgnoreCase) &&
+            string.Equals(fg.Title, "Task View", StringComparison.OrdinalIgnoreCase);
+
         string RuleFor(ForegroundInfo fg, out bool leaveCursorAlone)
         {
             ruleFromRow = false;
@@ -427,7 +432,7 @@ namespace DesktopGamepad
             if (path.IndexOf(@"\Microsoft.GamingApp_", StringComparison.OrdinalIgnoreCase) >= 0) return "off";
             if (path.IndexOf(@"\Microsoft.WindowsStore_", StringComparison.OrdinalIgnoreCase) >= 0) return "off";
             if (path.EndsWith(@"\ImmersiveControlPanel\SystemSettings.exe", StringComparison.OrdinalIgnoreCase)) return "off"; // Windows Settings
-            if (IsStartMenu(path)) return "off"; // Start and its search move a highlight with the controller themselves
+            if (IsStartMenu(path) || IsTaskView(fg)) return "off"; // Start, its search and Task View move their own highlight
             string file = Path.GetFileName(path);
             // Steam Big Picture Mode has its own controller support, windowed or fullscreen, and hides the cursor itself.
             bool steamWindow = file.Equals("steam.exe", StringComparison.OrdinalIgnoreCase) || file.Equals("steamwebhelper.exe", StringComparison.OrdinalIgnoreCase);
@@ -494,7 +499,7 @@ namespace DesktopGamepad
             bool xboxApp = fg.Path != null &&
                 (fg.Path.IndexOf(@"\Microsoft.GamingApp_", StringComparison.OrdinalIgnoreCase) >= 0 ||
                  fg.Path.IndexOf(@"\Microsoft.WindowsStore_", StringComparison.OrdinalIgnoreCase) >= 0 ||
-                 IsStartMenu(fg.Path)); // these bring up their own keyboard
+                 IsStartMenu(fg.Path)) || IsTaskView(fg); // these bring up their own keyboard, or have no text to type in
             buttonKeyboard = controller != null && settings.Keyboard && rule == "off" && !ownProcess && !leaveCursorAlone && !xboxApp;
             if (keyboard != null && fg.Window != buttonKeyboardWindow)
             {
