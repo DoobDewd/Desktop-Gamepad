@@ -10,9 +10,9 @@ Works great with the new Windows Xbox mode.
 
 - **Mouse** — the sticks move the cursor and scroll; buttons click, type keys and run shortcuts.
 - **Console-style typing** — click a text box and the on-screen keyboard pops up by itself, exactly like on an Xbox or a PlayStation. You type with the controller and never reach for a keyboard. Together with a cursor you drive with the stick, that gives you the complete console experience on a normal PC.
-- **Per-app profiles** — your own button layout for a browser, a video player, or any app you add.
+- **Automatic profile switching** — each app gets the layout you gave it. Open a browser and the browser profile loads; open a video player and its profile loads. You never switch anything by hand.
 - **Second layer** — hold one button and every other button does a second job.
-- **Stays out of the way** — hands the controller straight back to games, and to apps that already read one, such as the Xbox app, the Microsoft Store, Start and Xbox mode. You don't switch anything.
+- **Knows when to step back** — games and apps that read a controller themselves, such as the Xbox app, the Microsoft Store, Start and Xbox mode, keep the controller. Desktop Gamepad wakes up again when you leave them.
 - **Clean screen** — hides the mouse pointer when it isn't needed, and puts it back when you move it.
 - **Conflict warning** — tells you when another app is using the same controller, which can cause problems.
 - **Small and quiet** — no drivers, no background hooks in games, and it sleeps while no controller is connected.
