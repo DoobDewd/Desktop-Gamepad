@@ -94,7 +94,10 @@ export default function Apps({ settings, update, system, setPage, setEditProfile
         <div style={{ display: 'flex', alignItems: 'center', gap: 14, padding: '14px 18px' }}>
           <div style={{ width: 30, height: 30, borderRadius: 6, flex: 'none', background: 'rgba(255,255,255,.07)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 13, color: 'rgba(255,255,255,.5)' }}>∗</div>
           <div style={{ flex: 1, minWidth: 0 }}>
-            <div style={{ fontSize: 14 }}>All other apps</div>
+            <div style={{ display: 'flex', alignItems: 'baseline', gap: 7 }}>
+              <div style={{ fontSize: 14 }}>All other apps</div>
+              <div style={{ fontSize: 12, color: 'rgba(255,255,255,.45)' }}>(default profile)</div>
+            </div>
             <div style={{ fontSize: 11, color: 'rgba(255,255,255,.45)', marginTop: 2 }}>Anything without a row of its own uses this profile.</div>
           </div>
           <Select value={settings.activeProfile} onChange={(v) => setDefaultProfile(v)} style={{ maxWidth: 250 }}>
