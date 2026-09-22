@@ -35,6 +35,8 @@ namespace DesktopGamepad.Engine
         volatile bool stopping;
         volatile int clickX, clickY;
         volatile bool openedByUs;
+        /// <summary>How many opens in a row did not bring up a keyboard, which points at a stuck TabTip.exe.</summary>
+        int misses;
         volatile int openedAt;
         IntPtr openedForWindow;
         volatile int openedForProcess;
@@ -188,6 +190,14 @@ namespace DesktopGamepad.Engine
                     TouchKeyboard.Toggle();
                     openedByUs = true;
                     Thread.Sleep(450); // let it slide in, so a quick second click does not toggle it straight back off
+                    // Windows' own touch keyboard can get stuck: it then answers every toggle without showing anything,
+                    // until TabTip.exe is restarted. Only recorded for now, to learn how often it happens.
+                    if (!TouchKeyboard.IsOpen())
+                    {
+                        misses++;
+                        Log.Write("the touch keyboard did not appear (" + misses + " in a row); " + TouchKeyboard.DescribeWindows());
+                    }
+                    else misses = 0;
                     // Tried and dropped (2026-09-15): checking a strip of the screen to see whether the keyboard really
                     // appeared. On a 1280x720 TV the strip read exactly the same with the keyboard up, so the check would
                     // have "corrected" every open by closing it again.
