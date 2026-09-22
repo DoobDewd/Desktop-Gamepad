@@ -42,6 +42,18 @@ export const INPUT_GROUPS = [
 
 const DPAD_GLYPH = { dpadUp: 'Up', dpadDown: 'Down', dpadLeft: 'Left', dpadRight: 'Right', lstick: 'L stick', rstick: 'R stick', lclick: 'LS', rclick: 'RS' };
 
+// Row names per controller kind, where the Xbox name would not match the pad in the user's hands. Anything left out
+// keeps the name in INPUTS.
+const LABELS = {
+  playstation: { a: 'Cross button', b: 'Circle button', x: 'Square button', y: 'Triangle button', lb: 'L1 button', rb: 'R1 button', lt: 'L2 trigger', rt: 'R2 trigger', view: 'Create button', menu: 'Options button' },
+  generic: { a: 'Button 1', b: 'Button 2', x: 'Button 3', y: 'Button 4', lb: 'Left bumper (L1)', rb: 'Right bumper (R1)', lt: 'Left trigger (L2)', rt: 'Right trigger (R2)', view: 'Select button', menu: 'Start button' }
+};
+
+export function labelFor(input, kind) {
+  const set = LABELS[kind];
+  return (set && input.key && set[input.key]) || input.label;
+}
+
 export function glyphFor(input, kind) {
   const g = GLYPHS[kind] || GLYPHS.xbox;
   return input.key ? g[input.key] : (DPAD_GLYPH[input.id] || input.label);

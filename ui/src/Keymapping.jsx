@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { INPUTS, INPUT_GROUPS, LAYER_ACTION, artFor, glyphFor } from './data.js';
+import { INPUTS, INPUT_GROUPS, LAYER_ACTION, artFor, glyphFor, labelFor } from './data.js';
 import { Button, Glyph, PageTitle, Select, card, clickable } from './common.jsx';
 import Picker from './Picker.jsx';
 
@@ -150,8 +150,8 @@ export default function Keymapping({ settings, update, kind, setDialog, editProf
                   <div style={{ width: 32, flex: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                     <Glyph img={artFor(id, kind)} text={glyphFor(input, kind)} />
                   </div>
-                  <div style={{ flex: 1, minWidth: 0, fontSize: 13, color: 'rgba(255,255,255,.9)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{input.label}</div>
-                  <div {...clickable(() => setPicker({ input: id, layer, subtitle: input.label + (layer ? ' · while holding ' + (holder || 'the layer button') : '') }))} className="hov-field"
+                  <div style={{ flex: 1, minWidth: 0, fontSize: 13, color: 'rgba(255,255,255,.9)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{labelFor(input, kind)}</div>
+                  <div {...clickable(() => setPicker({ input: id, layer, subtitle: labelFor(input, kind) + (layer ? ' · while holding ' + (holder || 'the layer button') : '') }))} className="hov-field"
                     style={{ cursor: 'pointer', flex: 'none', width: 186, display: 'flex', alignItems: 'center', gap: 8, height: 32, padding: '0 10px', borderRadius: 5, background: '#383838', border: '1px solid rgba(255,255,255,.1)' }}>
                     <div style={{ flex: 1, minWidth: 0, fontSize: 13, color: action ? (layer ? '#f0cd7a' : '#fff') : 'rgba(255,255,255,.3)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{action || 'Not set'}</div>
                     <div style={{ flex: 'none', fontSize: 8, color: 'rgba(255,255,255,.55)' }}>▼</div>
