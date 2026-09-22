@@ -208,7 +208,7 @@ namespace DesktopGamepad
         {
             settings.MouseMode = settings.MouseMode == "on" ? "off" : "on";
             SaveAndApply();
-            Notifications.Show(settings.MouseMode == "on" ? "Mouse mode on" : "Mouse mode off",
+            Notifications.Show(tray, settings.MouseMode == "on" ? "Mouse mode on" : "Mouse mode off",
                 settings.MouseMode == "on" ? "The controller moves the cursor and clicks." : "Turn it back on from the tray icon, or press Menu + View on the controller.",
                 settings.Notify.Sound);
         }
@@ -289,8 +289,8 @@ namespace DesktopGamepad
                     if (v > 30) warned20 = warned10 = false;
                     if (settings.Notify.Battery)
                     {
-                        if (v <= 10 && !warned10) { warned10 = warned20 = true; Notifications.Show("Controller battery very low", "Your controller is at " + v + "%. Charge it or change the batteries soon.", settings.Notify.Sound); }
-                        else if (v <= 20 && !warned20) { warned20 = true; Notifications.Show("Controller battery low", "Your controller is at " + v + "%.", settings.Notify.Sound); }
+                        if (v <= 10 && !warned10) { warned10 = warned20 = true; Notifications.Show(tray, "Controller battery very low", "Your controller is at " + v + "%. Charge it or change the batteries soon.", settings.Notify.Sound); }
+                        else if (v <= 20 && !warned20) { warned20 = true; Notifications.Show(tray, "Controller battery low", "Your controller is at " + v + "%.", settings.Notify.Sound); }
                     }
                 }
                 PushStatus();
@@ -310,7 +310,7 @@ namespace DesktopGamepad
             if (on == steamConflict) return;
             steamConflict = on;
             // Kept vague on purpose: Desktop Gamepad cannot tell which app it is, or whether it clicks, moves the cursor or both.
-            if (on) Notifications.Show("Controller input conflict", "Another application is also responding to your controller. Open Desktop Gamepad for details.", settings.Notify.Sound);
+            if (on) Notifications.Show(tray, "Controller input conflict", "Another application is also responding to your controller. Open Desktop Gamepad for details.", settings.Notify.Sound);
             PushStatus();
         }
 
