@@ -81,13 +81,12 @@ namespace DesktopGamepad
             Set("view", "Right click");
             Set("rclick", "Middle click");
             Set("b", "Esc", "Ctrl+W");
-            Set("y", "F");
             Set("lt", "Precision cursor");
             Set("rt", LayerAction);
             Set("dpadUp", "Volume up");
             Set("dpadDown", "Volume down");
-            Set("dpadLeft", "Left arrow", "Ctrl+Alt+Left");
-            Set("dpadRight", "Right arrow", "Ctrl+Alt+Right");
+            Set("dpadLeft", "Left arrow");
+            Set("dpadRight", "Right arrow");
             return m;
         }
 
@@ -98,10 +97,12 @@ namespace DesktopGamepad
             {
                 m["lb"].Base["tap"] = "Ctrl+Shift+Tab";
                 m["rb"].Base["tap"] = "Ctrl+Tab";
-                // View and Menu swap roles here: Menu gives the right-click menu, View reloads (F11 on the layer).
+                // View and Menu swap roles here: Menu gives the right-click menu, and View and Y follow the shortcuts video
+                // sites use, YouTube above all: F full screen (F11 for the whole window) and "/" for search.
                 m["menu"].Base["tap"] = "Right click";
-                m["view"].Base["tap"] = "Ctrl+R";
+                m["view"].Base["tap"] = "F";
                 m["view"].Layer["tap"] = "F11";
+                m["y"].Base["tap"] = "/";
             }
             return m;
         }

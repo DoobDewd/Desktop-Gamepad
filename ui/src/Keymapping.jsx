@@ -130,6 +130,13 @@ export default function Keymapping({ settings, update, kind, setDialog, editProf
         </div>
       </div>
 
+      {profile === 'Browser' && (
+        <div style={{ fontSize: 12, lineHeight: 1.55, color: 'rgba(255,255,255,.55)', margin: '-4px 0 14px' }}>
+          The Browser layout follows the keys video sites use, YouTube above all: View full screens the video, and Y opens
+          search. Change anything you like; your changes are kept.
+        </div>
+      )}
+
       <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
         {INPUT_GROUPS.map((grp) => (
           <div key={grp.title} style={{ ...card, overflow: 'hidden' }}>

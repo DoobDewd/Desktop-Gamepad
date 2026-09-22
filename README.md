@@ -27,6 +27,8 @@ Every stick, button and trigger is yours to set, per profile:
 
 ![The Keymapping page](assets/keymapping.png)
 
+Out of the box: the left stick moves the cursor, the right stick scrolls, A clicks, B is Esc, the D-pad does arrows and volume, and holding RT gives every button a second job. The Browser profile follows the keys video sites use, YouTube above all.
+
 ## Install
 
 1. Download the setup file from [Releases](../../releases).
