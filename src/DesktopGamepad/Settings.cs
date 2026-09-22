@@ -179,11 +179,9 @@ namespace DesktopGamepad
             EnsureRow(s, "browser", "browser", "Browser", 0);
             EnsureRow(s, "player", "player", "Media", 1);
 
-            // Windows apps with their own controller support: always Off, and shown so people know why.
+            // Windows' own controller apps (Xbox, Store, Settings, Start, search, Task View) are handled in AppHost.RuleFor.
+            // They used to take a locked row each; one line under the list says it now. Older settings drop those rows here.
             s.Apps.RemoveAll(a => a.Kind == "xbox" || a.Kind == "store" || a.Kind == "wsettings");
-            if (SystemInfo.XboxAppInstalled()) s.Apps.Insert(2, new AppRule { Id = "xbox", Kind = "xbox", Name = "Xbox", Path = "Microsoft.GamingApp", Rule = "off" });
-            s.Apps.Insert(Math.Min(3, s.Apps.Count), new AppRule { Id = "store", Kind = "store", Name = "Microsoft Store", Path = "Microsoft.WindowsStore", Rule = "off" });
-            s.Apps.Insert(Math.Min(4, s.Apps.Count), new AppRule { Id = "wsettings", Kind = "wsettings", Name = "Windows Settings", Path = "SystemSettings.exe", Rule = "off" });
 
             // Steam: only when installed. The Steam window uses the main profile by default; Big Picture Mode is always
             // off (it has its own controller support), which the app rules handle by window.

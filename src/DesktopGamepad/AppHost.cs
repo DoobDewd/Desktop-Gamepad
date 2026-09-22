@@ -413,7 +413,7 @@ namespace DesktopGamepad
         /// <summary>The last rule came from a row on the Apps page (the browser, media player, Steam, or an added app).</summary>
         bool ruleFromRow;
 
-        static bool IsStartMenu(string path) =>
+        static bool IsSearchHost(string path) =>
             path.EndsWith(@"\StartMenuExperienceHost.exe", StringComparison.OrdinalIgnoreCase) ||
             (path.EndsWith(@"\SearchHost.exe", StringComparison.OrdinalIgnoreCase) && path.IndexOf(@"\SystemApps\", StringComparison.OrdinalIgnoreCase) >= 0);
 
@@ -432,7 +432,11 @@ namespace DesktopGamepad
             if (path.IndexOf(@"\Microsoft.GamingApp_", StringComparison.OrdinalIgnoreCase) >= 0) return "off";
             if (path.IndexOf(@"\Microsoft.WindowsStore_", StringComparison.OrdinalIgnoreCase) >= 0) return "off";
             if (path.EndsWith(@"\ImmersiveControlPanel\SystemSettings.exe", StringComparison.OrdinalIgnoreCase)) return "off"; // Windows Settings
-            if (IsStartMenu(path) || IsTaskView(fg)) return "off"; // Start, its search and Task View move their own highlight
+            // Task View moves its own highlight with the controller and has nothing to type in, so Windows drives it.
+            // Start is NOT in this list: Windows' own navigation there never reaches the search box, and once anything
+            // (a click, automation, Win+S) puts the focus in that box, Windows stops navigating with the controller at all.
+            // Tested 2026-09-22, including with a real mouse click, so the cursor is the only way to search in Start.
+            if (IsTaskView(fg)) return "off";
             string file = Path.GetFileName(path);
             // Steam Big Picture Mode has its own controller support, windowed or fullscreen, and hides the cursor itself.
             bool steamWindow = file.Equals("steam.exe", StringComparison.OrdinalIgnoreCase) || file.Equals("steamwebhelper.exe", StringComparison.OrdinalIgnoreCase);
@@ -499,7 +503,7 @@ namespace DesktopGamepad
             bool xboxApp = fg.Path != null &&
                 (fg.Path.IndexOf(@"\Microsoft.GamingApp_", StringComparison.OrdinalIgnoreCase) >= 0 ||
                  fg.Path.IndexOf(@"\Microsoft.WindowsStore_", StringComparison.OrdinalIgnoreCase) >= 0 ||
-                 IsStartMenu(fg.Path)) || IsTaskView(fg); // these bring up their own keyboard, or have no text to type in
+                 IsSearchHost(fg.Path)) || IsTaskView(fg); // these bring up their own keyboard, or have no text to type in
             buttonKeyboard = controller != null && settings.Keyboard && rule == "off" && !ownProcess && !leaveCursorAlone && !xboxApp;
             if (keyboard != null && fg.Window != buttonKeyboardWindow)
             {
