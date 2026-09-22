@@ -19,6 +19,10 @@ Works great with the new Windows Xbox mode.
 
 Built and tested with Xbox controllers, over USB or Bluetooth. PlayStation pads and other controllers should work too.
 
+Every stick, button and trigger is yours to set, per profile:
+
+![The Keymapping page](assets/keymapping.png)
+
 ## Install
 
 1. Download the setup file from [Releases](../../releases).
