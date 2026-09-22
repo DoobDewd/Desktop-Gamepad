@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { GLYPHS } from './data.js';
 import { clickable } from './common.jsx';
 
@@ -9,7 +9,7 @@ const ICONS = {
   settings: <g><path d="M6.7 1.6h2.6l.3 1.7 1.3.75 1.6-.65 1.3 2.25-1.3 1.1v1.5l1.3 1.1-1.3 2.25-1.6-.65-1.3.75-.3 1.7H6.7l-.3-1.7-1.3-.75-1.6.65-1.3-2.25 1.3-1.1v-1.5l-1.3-1.1 1.3-2.25 1.6.65 1.3-.75.3-1.7Z" /><circle cx="8" cy="8" r="2.1" /></g>
 };
 
-const ITEMS = [['home', 'Home'], ['buttons', 'Keymapping'], ['apps', 'Apps and profiles'], ['settings', 'Settings']];
+const ITEMS = [['home', 'Home'], ['buttons', 'Keymapping'], ['apps', 'App profiles'], ['settings', 'Settings']];
 export const PAGE_ORDER = ITEMS.map(([id]) => id);
 
 export default function Sidebar({ page, setPage, kind }) {

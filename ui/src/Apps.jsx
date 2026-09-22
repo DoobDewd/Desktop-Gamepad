@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+﻿import React, { useEffect } from 'react';
 import { Button, PageTitle, Select, card, clickable } from './common.jsx';
 import { uniqueName, emptyProfile } from './Keymapping.jsx';
 import { send } from './bridge.js';
@@ -18,6 +18,22 @@ export default function Apps({ settings, update, system, setPage, setEditProfile
     const path = resolved ? resolved.name : a.path;
     return { a, name, path, fixed: a.kind === 'xbox' || a.kind === 'store' || a.kind === 'wsettings', removable: a.kind === 'custom' };
   });
+
+  // A new profile for "All other apps" starts as a copy of the one in use, so the controller never goes dead everywhere.
+  const setDefaultProfile = (value) => {
+    if (value !== 'new') {
+      update((s) => { s.activeProfile = value; });
+      return;
+    }
+    const name = uniqueName(settings, 'New profile');
+    update((s) => {
+      s.profileOrder.push(name);
+      s.profiles[name] = structuredClone(s.profiles[s.activeProfile]);
+      s.activeProfile = name;
+    });
+    setEditProfile(name);
+    setPage('buttons');
+  };
 
   const setRule = (a, value) => {
     if (value === 'new') {
@@ -39,7 +55,7 @@ export default function Apps({ settings, update, system, setPage, setEditProfile
   return (
     <div>
       <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 16, flexWrap: 'wrap' }}>
-        <PageTitle>Apps and profiles</PageTitle>
+        <PageTitle>App profiles</PageTitle>
         <Button primary onClick={() => send({ type: 'pickApp' })}>Add an app</Button>
       </div>
 
@@ -74,6 +90,19 @@ export default function Apps({ settings, update, system, setPage, setEditProfile
             )}
           </div>
         ))}
+
+        <div style={{ display: 'flex', alignItems: 'center', gap: 14, padding: '14px 18px' }}>
+          <div style={{ width: 30, height: 30, borderRadius: 6, flex: 'none', background: 'rgba(255,255,255,.07)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 13, color: 'rgba(255,255,255,.5)' }}>∗</div>
+          <div style={{ flex: 1, minWidth: 0 }}>
+            <div style={{ fontSize: 14 }}>All other apps</div>
+            <div style={{ fontSize: 11, color: 'rgba(255,255,255,.45)', marginTop: 2 }}>Anything without a row of its own uses this profile.</div>
+          </div>
+          <Select value={settings.activeProfile} onChange={(v) => setDefaultProfile(v)} style={{ maxWidth: 250 }}>
+            {settings.profileOrder.map((p) => <option key={p} value={p}>{p}</option>)}
+            <option value="new">New profile…</option>
+          </Select>
+          <div style={{ flex: 'none', width: 22 }} />
+        </div>
       </div>
 
       <div style={{ marginTop: 14, fontSize: 12, color: 'rgba(255,255,255,.5)', lineHeight: 1.5 }}>

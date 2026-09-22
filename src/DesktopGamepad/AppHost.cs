@@ -117,7 +117,7 @@ namespace DesktopGamepad
             var menu = new ContextMenuStrip();
             var open = new ToolStripMenuItem("Open Desktop Gamepad", null, (s, e) => ShowWindow()) { Font = new Font(SystemFonts.MenuFont, FontStyle.Bold) };
             var mouse = new ToolStripMenuItem("Mouse mode", null, (s, e) => ToggleMouseMode());
-            var profiles = new ToolStripMenuItem("Profile");
+            var profiles = new ToolStripMenuItem("Default profile");
             var quit = new ToolStripMenuItem("Quit Desktop Gamepad", null, (s, e) => Quit());
             menu.Items.AddRange(new ToolStripItem[] { open, new ToolStripSeparator(), mouse, profiles, new ToolStripSeparator(), quit });
             menu.Opening += (s, e) =>

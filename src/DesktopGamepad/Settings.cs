@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -20,7 +20,7 @@ namespace DesktopGamepad
         };
     }
 
-    /// <summary>A row on the Apps and profiles page.</summary>
+    /// <summary>A row on the App profiles page.</summary>
     public sealed class AppRule
     {
         /// <summary>"browser", "player", "xbox", "steam" or a generated id for apps the user added.</summary>
