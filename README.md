@@ -27,7 +27,7 @@ Every stick, button and trigger is yours to set, per profile:
 
 ![The Keymapping page](assets/keymapping.png)
 
-Out of the box: the left stick moves the cursor, the right stick scrolls, A clicks, B is Esc, the D-pad does arrows and volume, and holding RT gives every button a second job. The Browser profile follows the keys video sites use, YouTube above all.
+Out of the box: the left stick moves the cursor, the right stick scrolls, A clicks, B is Esc, the D-pad does arrows and volume, and holding RT gives every button a second job. The Browser profile follows YouTube hotkeys.
 
 Every one of those is only a starting point. Each stick, button and trigger can be set to any key, any shortcut, a mouse click, scrolling, the keyboard, or nothing at all, and each profile keeps its own set.
 
