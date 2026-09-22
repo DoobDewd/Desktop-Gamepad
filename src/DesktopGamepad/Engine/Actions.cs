@@ -1,10 +1,10 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
 namespace DesktopGamepad.Engine
 {
-    public enum ActionKind { None, MouseButton, Keys, MoveCursor, Scroll, ShowKeyboard, ToggleMouseMode, SwitchProfile, Layer, Precision }
+    public enum ActionKind { None, MouseButton, Keys, MoveCursor, Scroll, ShowKeyboard, ToggleMouseMode, Layer, Precision }
 
     /// <summary>An action name from the UI ("Ctrl+W", "Num 5", "Volume up", "Left click"…) turned into something that can be sent.</summary>
     public sealed class ParsedAction
@@ -42,7 +42,6 @@ namespace DesktopGamepad.Engine
                 case "Scroll": return new ParsedAction { Kind = ActionKind.Scroll };
                 case "Show keyboard": return new ParsedAction { Kind = ActionKind.ShowKeyboard };
                 case "Mouse mode on / off": return new ParsedAction { Kind = ActionKind.ToggleMouseMode };
-                case "Switch profile": return new ParsedAction { Kind = ActionKind.SwitchProfile };
                 case "Hold for second layer": return new ParsedAction { Kind = ActionKind.Layer };
                 case "Precision cursor": return new ParsedAction { Kind = ActionKind.Precision };
             }

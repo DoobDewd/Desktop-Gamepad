@@ -71,7 +71,8 @@ export const ACTIONS = {
   Keyboard: [],
   Numpad: [],
   'Media and volume': ['Play / pause', 'Next track', 'Previous track', 'Volume up', 'Volume down', 'Mute'],
-  System: ['Show keyboard', 'Mouse mode on / off', 'Switch profile', LAYER_ACTION, 'Precision cursor']
+  // "Switch profile" was dropped in 1.0.1: profiles already follow the app in front, so a button for it only confused people.
+  System: ['Show keyboard', 'Mouse mode on / off', LAYER_ACTION, 'Precision cursor']
 };
 
 // label, flex weight, modifier id

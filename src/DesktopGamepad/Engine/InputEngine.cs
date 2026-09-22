@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -29,7 +29,6 @@ namespace DesktopGamepad.Engine
     public sealed class InputEngine : IDisposable
     {
         public event Action ToggleMouseModeRequested;
-        public event Action SwitchProfileRequested;
         public event Action ShowKeyboardRequested;
         /// <summary>An input id was pressed (for the setup screen's "try it" step).</summary>
         public event Action<string> InputPressed;
@@ -306,7 +305,6 @@ namespace DesktopGamepad.Engine
                     break;
                 case ActionKind.ShowKeyboard: ShowKeyboardRequested?.Invoke(); break;
                 case ActionKind.ToggleMouseMode: ToggleMouseModeRequested?.Invoke(); break;
-                case ActionKind.SwitchProfile: SwitchProfileRequested?.Invoke(); break;
             }
         }
 

@@ -73,7 +73,6 @@ namespace DesktopGamepad
             // ---- Controller engine ----
             engine = new InputEngine();
             engine.ToggleMouseModeRequested += () => ui.Post(_ => ToggleMouseMode(), null);
-            engine.SwitchProfileRequested += () => ui.Post(_ => SwitchProfile(), null);
             engine.ShowKeyboardRequested += () => ThreadPool.QueueUserWorkItem(_ => TouchKeyboard.Toggle());
             engine.InputPressed += id => ui.Post(_ => window?.Post(JsonSerializer.Serialize(new { type = "input", id }, SettingsStore.Json)), null);
             engine.BeforeKeys = () => keyboard?.BeforeKeyAction();
@@ -212,14 +211,6 @@ namespace DesktopGamepad
             Notifications.Show(settings.MouseMode == "on" ? "Mouse mode on" : "Mouse mode off",
                 settings.MouseMode == "on" ? "The controller moves the cursor and clicks." : "Turn it back on from the tray icon, or press Menu + View on the controller.",
                 settings.Notify.Sound);
-        }
-
-        void SwitchProfile()
-        {
-            int i = settings.ProfileOrder.IndexOf(settings.ActiveProfile);
-            settings.ActiveProfile = settings.ProfileOrder[(i + 1) % settings.ProfileOrder.Count];
-            SaveAndApply();
-            Notifications.Show("Profile: " + settings.ActiveProfile, "Switched with the controller.", false);
         }
 
         static void ApplyStartWithWindows(bool on)
