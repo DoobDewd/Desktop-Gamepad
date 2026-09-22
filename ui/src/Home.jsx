@@ -71,7 +71,7 @@ export default function Home({ settings, update, status, appName, setDialog }) {
         <div style={{ flex: 1, minWidth: 0 }}>
           <div style={{ fontSize: 13, fontWeight: 600 }}>Works great with Xbox mode</div>
           <div style={{ fontSize: 12, lineHeight: 1.5, color: 'rgba(255,255,255,.72)', marginTop: 3 }}>
-            Xbox mode gives your PC a console-style home screen. {appName} stays out of the way there, and takes over as your mouse and keyboard when you open a desktop app or website. Turn it on in Settings → Gaming → Xbox mode.
+            Xbox mode gives your PC a console-style home screen. Turn it on in Settings → Gaming → Xbox mode.
           </div>
         </div>
       </div>

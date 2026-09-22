@@ -4,7 +4,7 @@
 
 Works great with the new Windows Xbox mode.
 
-![The Desktop Gamepad window](assets/screenshot.png)
+![The Desktop Gamepad window](assets/home.png)
 
 ## Features
 
