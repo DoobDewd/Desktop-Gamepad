@@ -1,15 +1,49 @@
-Desktop Gamepad turns a game controller into a mouse and keyboard for Windows, so you can use your PC from the couch.
+# Desktop Gamepad
 
-Works great with the new Windows Xbox Mode!
+**Use your controller as a mouse and keyboard on Windows, so you can run your PC from the couch.**
 
-- Sticks move the cursor and scroll. Buttons click, type keys and run shortcuts.
-- Click a text box and the on-screen keyboard pops up by itself, exactly like on an Xbox or a PlayStation: you type with the controller and never reach for a keyboard. That, plus a cursor you drive with the stick, gives you the complete console experience on a normal PC.
-- Per-app profiles: your own button layout for a browser, a video player, or any app you add.
-- Hold one button for a second layer, so every button does two things.
-- Hands the controller straight back to games, and to apps that already read one, like the Xbox app, the Microsoft Store and Xbox mode. You don't switch anything.
-- Hides the mouse pointer when it isn't needed, and puts it back when you move it.
-- Warns you when another app responds to the same controller, which would make one press act twice.
-- Small and quiet: no drivers, no background hooks in games, and it sleeps while no controller is connected.
-- Controller button art based on Xelu's Free Controller & Key Prompts
+Works great with the new Windows Xbox mode.
 
-Windows 10 and 11. No account, no ads, and nothing leaves your PC.
+## Features
+
+- **Mouse** — the sticks move the cursor and scroll; buttons click, type keys and run shortcuts.
+- **Console-style typing** — click a text box and the on-screen keyboard pops up by itself, exactly like on an Xbox or a PlayStation. You type with the controller and never reach for a keyboard. Together with a cursor you drive with the stick, that gives you the complete console experience on a normal PC.
+- **Per-app profiles** — your own button layout for a browser, a video player, or any app you add.
+- **Second layer** — hold one button and every other button does a second job.
+- **Stays out of the way** — hands the controller straight back to games, and to apps that already read one, such as the Xbox app, the Microsoft Store, Start and Xbox mode. You don't switch anything.
+- **Clean screen** — hides the mouse pointer when it isn't needed, and puts it back when you move it.
+- **Conflict warning** — tells you when another app is using the same controller, which can cause problems.
+- **Small and quiet** — no drivers, no background hooks in games, and it sleeps while no controller is connected.
+
+Built and tested with Xbox controllers, over USB or Bluetooth. PlayStation pads and other controllers should work too.
+
+## Install
+
+1. Download the setup file from [Releases](../../releases).
+2. Run it. It installs for you only, so it needs no administrator rights.
+
+Windows may show a blue **Windows protected your PC** box, because this app is not signed with a paid certificate. Click **More info**, then **Run anyway**.
+
+## Requirements
+
+- Windows 10 version 1809 or later, or Windows 11
+- .NET Framework 4.8 and the WebView2 runtime — both come with Windows 11, and the installer tells you if one is missing
+
+No account, no ads, and nothing leaves your PC.
+
+## Build from source
+
+You need the .NET SDK and Node.js.
+
+    cd ui
+    npm install
+    npm run build
+
+    cd ..\src\DesktopGamepad
+    dotnet build -c Release
+
+The app is then in `src\DesktopGamepad\bin\Release\net48`.
+
+## Credits
+
+Controller button art based on [Xelu's Free Controller & Key Prompts](https://thoseawesomeguys.com/prompts/).
