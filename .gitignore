@@ -1,0 +1,25 @@
+# Build output: made again by `npm run build` (ui), `dotnet build` (src) and Inno Setup (installer).
+bin/
+obj/
+ui/node_modules/
+ui/dist/
+installer/Output/
+
+# Editor and OS clutter
+.vs/
+*.user
+Thumbs.db
+
+# Design mock-ups and hand-off notes: not part of the app.
+design/
+
+# The Xelu prompt pack the button art was made from (third-party, not shipped).
+ui/public/assets/xelu/
+
+# Logs and scratch files
+*.log
+.vscode/
+.idea/
+# Kept out of the public repository.
+installer/
+docs/

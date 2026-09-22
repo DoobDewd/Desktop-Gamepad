@@ -1,0 +1,54 @@
+/* Global look from the Desktop Gamepad design: Windows 11 dark, Segoe UI Variable, accent #60cdff. */
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; }
+body {
+  margin: 0;
+  background: #202020;
+  color: #fff;
+  font-family: "Segoe UI Variable Text", "Segoe UI Variable", "Segoe UI", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  user-select: none;
+  overflow: hidden;
+}
+input, select { user-select: text; }
+a { color: #60cdff; text-decoration: none; cursor: pointer; }
+a:hover { color: #93dcff; text-decoration: underline; }
+input[type="range"] { accent-color: #60cdff; }
+::selection { background: rgba(96, 205, 255, .3); }
+::-webkit-scrollbar { width: 12px; height: 12px; }
+::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, .18); border-radius: 6px; border: 3px solid transparent; background-clip: content-box; }
+::-webkit-scrollbar-track { background: transparent; }
+
+@keyframes pp-rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes pp-pop { from { opacity: 0; transform: scale(.96); } to { opacity: 1; transform: scale(1); } }
+
+.display { font-family: 'Segoe UI Variable Display', 'Segoe UI', system-ui, sans-serif; }
+
+/* Hover styles the design declares with style-hover. */
+.hov-nav:hover { background: rgba(255, 255, 255, .06) !important; }
+.hov-btn:hover { background: rgba(255, 255, 255, .11) !important; }
+.hov-accent:hover { background: #7ed7ff !important; }
+.hov-card:hover { background: #323232 !important; }
+.hov-field:hover { background: #434343 !important; border-color: rgba(255, 255, 255, .2) !important; }
+.hov-clear:hover { color: #f09a9a !important; }
+.hov-row:hover { background: rgba(255, 255, 255, .03) !important; }
+.hov-item:hover { background: rgba(255, 255, 255, .07) !important; }
+.hov-key:hover { background: rgba(96, 205, 255, .16) !important; border-color: rgba(96, 205, 255, .55) !important; }
+.hov-x:hover { color: #fff !important; }
+
+/* Keyboard / controller focus: a clear ring, as the design asks for controller-friendly screens. */
+[tabindex]:focus-visible, button:focus-visible, select:focus-visible, input:focus-visible {
+  outline: 2px solid #60cdff;
+  outline-offset: 2px;
+}
+/* The controller highlight (padnav.js). White, so it shows on accent-coloured buttons as well as dark ones.
+   Full-width rows draw it inside their edge, because their cards clip anything outside. */
+[data-padfocus] { outline: 2px solid #fff !important; outline-offset: 2px !important; }
+.hov-row[data-padfocus], .hov-item[data-padfocus], .hov-nav[data-padfocus], .pp-chooser-item[data-padfocus] { outline-offset: -2px !important; }
+
+/* Option list the controller opens for a dropdown. */
+.pp-chooser-backdrop { position: fixed; inset: 0; z-index: 90; }
+.pp-chooser { position: fixed; max-height: 60vh; overflow: auto; padding: 4px; border-radius: 7px; background: #2c2c2c; border: 1px solid rgba(255, 255, 255, .12); box-shadow: 0 16px 40px rgba(0, 0, 0, .5); animation: pp-pop .1s ease-out; }
+.pp-chooser-item { font-size: 13px; padding: 7px 12px; border-radius: 4px; cursor: pointer; white-space: nowrap; color: rgba(255, 255, 255, .85); }
+.pp-chooser-item.on { background: rgba(255, 255, 255, .08); color: #fff; }
+.pp-chooser-item:hover { background: rgba(255, 255, 255, .06); }
