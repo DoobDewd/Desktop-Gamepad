@@ -1,8 +1,8 @@
 # Desktop Gamepad
 
-**Use your controller as a mouse and keyboard on Windows, so you can run your PC from the couch.**
+**Use your controller as a mouse and keyboard on Windows.**
 
-Works great with the new Windows Xbox mode.
+Works great with the new Windows Xbox mode but not required!
 
 ![The Desktop Gamepad window](assets/home.png)
 
