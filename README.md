@@ -4,6 +4,8 @@
 
 Works great with the new Windows Xbox mode.
 
+![The Desktop Gamepad window](assets/screenshot.png)
+
 ## Features
 
 - **Mouse** — the sticks move the cursor and scroll; buttons click, type keys and run shortcuts.
