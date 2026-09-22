@@ -109,7 +109,7 @@ export default function Apps({ settings, update, system, setPage, setEditProfile
       </div>
 
       <div style={{ marginTop: 14, fontSize: 12, color: 'rgba(255,255,255,.5)', lineHeight: 1.5 }}>
-        The Xbox app and many Windows screens have their own controller support, so they keep the controller and need no row here: Xbox, Microsoft Store, Settings, Windows search, Task View and Steam Big Picture.
+        The Xbox app and many Windows screens have their own controller support, so they keep the controller and need no row here: Xbox, Microsoft Store, Settings, Start, Windows search, Task View and Steam Big Picture.
         <div style={{ marginTop: 8 }}>
           Off means the controller does nothing in that app, and the cursor gets out of the way while you use the controller there. Games get the controller to themselves, in a window or fullscreen. To use the controller as a mouse in a game, add the game here and choose a profile.
         </div>

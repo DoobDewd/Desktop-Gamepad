@@ -413,7 +413,8 @@ namespace DesktopGamepad
         /// <summary>The last rule came from a row on the Apps page (the browser, media player, Steam, or an added app).</summary>
         bool ruleFromRow;
 
-        static bool IsSearchHost(string path) =>
+        /// <summary>Start and Windows' search window, which move their own highlight with the controller.</summary>
+        static bool IsStartMenu(string path) =>
             path.EndsWith(@"\StartMenuExperienceHost.exe", StringComparison.OrdinalIgnoreCase) ||
             (path.EndsWith(@"\SearchHost.exe", StringComparison.OrdinalIgnoreCase) && path.IndexOf(@"\SystemApps\", StringComparison.OrdinalIgnoreCase) >= 0);
 
@@ -432,11 +433,11 @@ namespace DesktopGamepad
             if (path.IndexOf(@"\Microsoft.GamingApp_", StringComparison.OrdinalIgnoreCase) >= 0) return "off";
             if (path.IndexOf(@"\Microsoft.WindowsStore_", StringComparison.OrdinalIgnoreCase) >= 0) return "off";
             if (path.EndsWith(@"\ImmersiveControlPanel\SystemSettings.exe", StringComparison.OrdinalIgnoreCase)) return "off"; // Windows Settings
-            // Task View moves its own highlight with the controller and has nothing to type in, so Windows drives it.
-            // Start is NOT in this list: Windows' own navigation there never reaches the search box, and once anything
-            // (a click, automation, Win+S) puts the focus in that box, Windows stops navigating with the controller at all.
-            // Tested 2026-09-22, including with a real mouse click, so the cursor is the only way to search in Start.
-            if (IsTaskView(fg)) return "off";
+            // Start, its search and Task View move their own highlight with the controller, so Windows drives them. In Start
+            // that means no search with the controller: Windows' navigation never reaches the search box, and once anything
+            // puts the focus there (a real mouse click included) Windows stops navigating Start at all. Letting the cursor
+            // work there instead was worse: A then opened the tile under the pointer and the highlighted tile at once.
+            if (IsStartMenu(path) || IsTaskView(fg)) return "off";
             string file = Path.GetFileName(path);
             // Steam Big Picture Mode has its own controller support, windowed or fullscreen, and hides the cursor itself.
             bool steamWindow = file.Equals("steam.exe", StringComparison.OrdinalIgnoreCase) || file.Equals("steamwebhelper.exe", StringComparison.OrdinalIgnoreCase);
@@ -503,7 +504,7 @@ namespace DesktopGamepad
             bool xboxApp = fg.Path != null &&
                 (fg.Path.IndexOf(@"\Microsoft.GamingApp_", StringComparison.OrdinalIgnoreCase) >= 0 ||
                  fg.Path.IndexOf(@"\Microsoft.WindowsStore_", StringComparison.OrdinalIgnoreCase) >= 0 ||
-                 IsSearchHost(fg.Path)) || IsTaskView(fg); // these bring up their own keyboard, or have no text to type in
+                 IsStartMenu(fg.Path)) || IsTaskView(fg); // these bring up their own keyboard, or have no text to type in
             buttonKeyboard = controller != null && settings.Keyboard && rule == "off" && !ownProcess && !leaveCursorAlone && !xboxApp;
             if (keyboard != null && fg.Window != buttonKeyboardWindow)
             {
