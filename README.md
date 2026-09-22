@@ -17,7 +17,7 @@ Works great with the new Windows Xbox mode but not required!
 - **Conflict warning** — tells you when another app is using the same controller, which can cause problems.
 - **Small and quiet** — no drivers, no background hooks in games, and it sleeps while no controller is connected.
 
-Built and tested with Xbox controllers, over USB or Bluetooth. PlayStation pads and other controllers should work too.
+Built and tested with Xbox controllers, over USB or Bluetooth. PlayStation pads and other controllers should work too. Most third-party pads report themselves as Xbox pads and behave exactly like one; anything else falls back to plain names such as Button 1 and L1. If your controller does not work, please open an issue and say which one it is.
 
 Click a text box, and the keyboard is there:
 
